@@ -72,7 +72,14 @@ class Zeus {
         }
     }
 
-    
+    public function make_route($path = '') {
+        $url = explode("/", $_SERVER['PHP_SELF']);
+        if ($url[1] == 'index.php') {
+            return $path;
+        } else {
+            return '/' . $url[1] . $path;
+        }
+    }
 
     public static function register($route, $callback, $method) {
         if (!static::$route_found) {
