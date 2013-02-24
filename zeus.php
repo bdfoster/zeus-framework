@@ -50,6 +50,9 @@ class Zeus {
     public function __construct() {
         $this->route = $this->get_route();
         $this->method = $this->get_method();
+        $this->route_segments = explode('/', trim($this->route, '/'));
+        $this->web_root = dirname($_SERVER['PHP_SELF']);
+        
     }
     
     protected function get_route() {
