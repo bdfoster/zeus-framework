@@ -72,6 +72,8 @@ class Zeus {
         }
     }
 
+    
+
     public static function register($route, $callback, $method) {
         if (!static::$route_found) {
             $zeus = status::get_instance();
@@ -106,6 +108,14 @@ class Zeus {
                 echo $callback($zeus);
             }
         }
+    }
+
+    public function request($key) {
+        return $this->route_variables[$key];
+    }
+
+    public function form($key) {
+        return $_POST[$key];
     }
 
     public function set($index, $value) {
