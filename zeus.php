@@ -102,4 +102,8 @@ class Zeus {
         }
     }
 
+    public function set($index, $value) {
+        $this->vars[$index] = $value;
+    }
+
 }
