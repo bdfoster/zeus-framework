@@ -36,6 +36,9 @@ class Zeus {
     public static $route_found = false;
     public $route = '';
     public $method = '';
+    public $vars = array();
+    public $route_segments = array();
+    public $route_variables = array();
 
     public static function get_instance() {
         if (!isset(self::$instance)) {
