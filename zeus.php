@@ -128,5 +128,9 @@ class Zeus {
     public function set($index, $value) {
         $this->vars[$index] = $value;
     }
+    
+    public function redirect($path = '/') {
+        header('Location: ' . $this->make_route($path));
+    }
 
 }
