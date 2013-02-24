@@ -9,3 +9,6 @@
 // error_reporting(E_ALL | E_STRICT);
 define('ROOT', __DIR__ . '/..');
 define('ZEUS', ROOT . 'zeus.php');
+define('TEMPLATE_LOC', ROOT . '/templates/');
+define('MODULE_LOC' . ROOT . '/modules/');
+
