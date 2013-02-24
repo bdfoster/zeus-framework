@@ -26,6 +26,10 @@ function delete($route, $callback) {
     Zeus::register($route, $callback, 'DELETE');
 }
 
+function resolve() {
+    Zeus::resolve();
+}
+
 class Zeus {
 
     private static $instance;
@@ -59,6 +63,42 @@ class Zeus {
             return 'GET';
         } else {
             return $_SERVER['REQUEST_METHOD'];
+        }
+    }
+
+    public static function register($route, $callback, $method) {
+        if (!static::$route_found) {
+            $zeus = status::get_instance();
+            $url_parts = explode('/', trim($route, '/'));
+            $matched = null;
+            if (count($zeus->route_segments == count($url_parts))) {
+                foreach ($url_parts as $key=>$part) {
+                    if (strpos($part, ":") != false) {
+                        // Contains a route variable
+                        $zeus->route_variables[substr($part, 1)] = $zeus->route_segments[$key];
+                    } else {
+                        // Does not contain a route variable
+                        if ($part == $zeus->route_segments[$key]) {
+                            if (!$matched) {
+                                // Routes match
+                                $matched = true;
+                            }
+                        } else {
+                            // Routes don't match
+                            $matched = false;
+                        }
+                    }
+                }
+            } else {
+                // Routes are different lengths
+                $matched = false;
+            }
+            if (!matched || $zeus->method != $method) {
+                return false;
+            } else {
+                static::$route_found = true;
+                echo $callback($zeus);
+            }
         }
     }
 
