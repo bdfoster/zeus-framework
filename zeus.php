@@ -4,11 +4,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. 
  */
- 
-// ini_set('display_errors', 'On');
-// error_reporting(E_ALL | E_STRICT);
-
-define('ROOT', __DIR__ . '/..');
 
 function get($route, $callback) {
     Zeus::register($route, $callback, 'GET');
